@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Academic Advising - Respond";
+    var id = ViewBag.id;
+}
+
+<h1>Academic Advising - Response</h1>
+
+<div id="divAcademicAdvisingURespond">
+    <div id="divAcademicAdvisingURespond">
+        <label>From</label>
+        <input class="form-control" data-bind="value: $data.sender" disabled />
+        <label>To</label>
+        <input class="form-control" data-bind="value: $data.receiver" disabled /><br>
+        <input class="form-control" data-bind="value: $data.sendToInstructor, visible: false" maxlength="20" />
+        <label>Message Subject</label>
+        <input class="form-control " data-bind="value: $data.messageSubject" placeholder="50 chars max" maxlength="50" />
+        <label>Message Body</label>
+        <input class="form-control" data-bind="value: $data.messageBody" placeholder="256 chars max" maxlength="256" />
+        <br />
+
+        <input  type="button" data-bind="value: 'Send Response', click: $data.respond" style="margin-left:80px" />
+        <div id="divMessage"></div>
+    </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var viewModel = new AcademicAdvisingViewModel();
+        viewModel.Load2(@id);
+    });
+
+</script>

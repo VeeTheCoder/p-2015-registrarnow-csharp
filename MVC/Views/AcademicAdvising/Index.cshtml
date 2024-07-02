@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var studentId = ViewBag.studentId;
+    var isInstructor = ViewBag.isInstructor;
+    var role = ViewBag.role;
+    var id = ViewBag.id;
+}
+<h2>Academic Advising - Viewing Messages</h2>
+
+<hr>
+
+<h3>Inbox</h3>
+
+<div id="divAcademicAdvisingList">
+    <table>
+        <thead>
+            <tr>
+                <th>Student Id</th>
+                <th>Message Subject</th>
+              
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: viewModel">
+          
+            <tr>
+                <td> <a data-bind="text: senderName, attr: {href: 'Get?id=' + id}"></a>  </td>
+
+                <td data-bind="text: messageSubject"></td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var academicAdvisingViewModelObj = new AcademicAdvisingViewModel();
+        academicAdvisingViewModelObj.GetAll("@studentId","@isInstructor");
+    });
+</script>

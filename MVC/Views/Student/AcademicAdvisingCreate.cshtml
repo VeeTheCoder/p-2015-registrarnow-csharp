@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Academic Advising - Create Message";
+    var studentId = ViewBag.studentId;
+}
+<h2>Academic Advising - Messaging Administrator</h2>
+<hr>
+
+<div id="divAcademicAdvisingCreate">
+    <label>From</label>
+    <input class="form-control" data-bind="value: studentName" disabled  />
+    <br />
+    <label>To</label>
+    <input class="form-control" value="Administrator" disabled /><br>
+    <input class="form-control" data-bind="value: sendToInstructor, visible: false" maxlength="20"/>
+    <label>Message Subject</label>
+    <input class="form-control " data-bind="value: messageSubject" maxlength="50" />
+    <br />
+    <label>Message Body</label>
+    <input class="form-control" data-bind ="value: messageBody" maxlength="256" />
+    <br />
+
+    <input type="button" value="Send Request" data-bind="click: create " id="idSubmitButton" />
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var academicAdvisingViewModelObj = new AcademicAdvisingViewModel();
+        academicAdvisingViewModelObj.Initialize("@studentId");
+    });
+
+   
+</script>

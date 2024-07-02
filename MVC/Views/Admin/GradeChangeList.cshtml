@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Grade Change Messages (Admin)";
+    var id = ViewBag.id;
+}
+<h2>Grade Change Requests</h2>
+<hr>
+
+<div id="divGradeChangeList">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Student Id</th>
+                <th>Course Name</th>
+                <th>Instructor Name</th>
+
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody data-bind="foreach: viewModel">
+            <tr class="warning" data-bind="if: status == 'Pending' ">
+
+                <td> <a data-bind="text: studentName, attr: {href : 'GradeChangeGet?id=' + id}"> </a> </td>
+                <td data-bind="text: studentId"></td>
+                <td data-bind="text: courseName"></td>
+                <td data-bind="text: instructorName"></td>
+
+                <td data-bind="text: status"></td>
+            </tr>
+        </tbody>
+
+        <tbody data-bind="foreach: viewModel">
+            <tr class="success" data-bind="if: status == 'Approved' ">
+
+                <td> <a data-bind="text: studentName, attr: {href : 'GradeChangeGet?id=' + id}"> </a> </td>
+                <td data-bind="text: studentId"></td>
+                <td data-bind="text: courseName"></td>
+                <td data-bind="text: instructorName"></td>
+
+                <td data-bind="text: status"></td>
+            </tr>
+        </tbody>
+
+        <tbody data-bind="foreach: viewModel">
+            <tr class="danger" data-bind="if: status == 'Rejected' ">
+
+                <td> <a data-bind="text: studentName, attr: {href : 'GradeChangeGet?id=' + id}"> </a> </td>
+                <td data-bind="text: studentId"></td>
+                <td data-bind="text: courseName"></td>
+                <td data-bind="text: instructorName"></td>
+
+                <td data-bind="text: status"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<style>
+    table {
+        border-spacing: 0px;
+        border-collapse: initial;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var gradeChangeViewModelObj = new GradeChangeViewModel();
+        gradeChangeViewModelObj.GetAll("Placeholder", true);
+    });
+</script>

@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Grade Change - Get Message";
+}
+<h2>Grade Change - Viewing Grade Change Request</h2>
+
+<hr>
+
+<h2>From : John Doe (A000001)</h2>
+
+<h2>Course : CSE 134b </h2>
+
+<p>Reason:</p>
+<p>
+    My total score in the class was a 89.63% but I only received a B+. The professor specified that the range for an A in the class was a 90%-100%, and that he would round up the final scores. Please rectify.
+</p>
+
+<form method="post" action="/AcademicAdvising/Delete?id=1">
+    <input type="submit" value="Delete Request" id="idSubmitButton" />
+</form>
+
+<form method="post" action="/AcademicAdvising/Create?id=1">
+    <input type="submit" value="Reply" id="idSubmitButton" />
+</form>
+
+<form method="post" action="/AcademicAdvising/?id=1">
+    <input type="submit" value="Back" id="idSubmitButton" />
+</form>

@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "ManageRankings";
+}
+
+<h2>ManageRankings: @ViewBag.Course</h2>
+
+<div id="divRankingContent">
+    <b>Insert Ranking:</b>
+    <br />
+    <label>Student:</label>
+    <!-- <input type="text" data-bind="value: viewModel.studentidField"/> -->
+    <select data-bind="options: viewModel.studentids,
+                            value: viewModel.studentidField,
+                            optionsCaption: 'Select...'
+                        "></select>
+    <br />
+    <label>Rank:</label>
+    <input type="text" data-bind="value: viewModel.rankidField"/>
+    <br />
+    <button data-bind="click: viewModel.handleClick(@ViewBag.Id,viewModel.studentidField(),viewModel.rankidField())">Insert Rank</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Rank</th>
+                <th>    </th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: viewModel.data">
+            <tr>
+                <td data-bind="text: studentid"></td>
+                <td data-bind="text: rank"></td>
+                <td>
+                    <button data-bind="click: handle()">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var rankingsViewModelObj = new RankingsViewModel();
+        rankingsViewModelObj.Load2("@ViewBag.Id");
+    });
+</script>

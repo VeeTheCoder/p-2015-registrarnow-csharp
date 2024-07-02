@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "ManageFinalSchedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Final Schedule</h2>
+<hr />
+
+<div id="divFinalScheduleListContent">
+    <table style="border:1px solid #e3e3e3">
+        <thead>
+            <tr>
+                <th style="border:1px solid #e3e3e3;padding: 5px; text-align:center">Title</th>
+                <th style="border:1px solid #e3e3e3;padding: 5px; text-align:center">Final Location</th>
+                <th style="border:1px solid #e3e3e3;padding: 5px; text-align:center">Final Time</th>
+                <th style="border:1px solid #e3e3e3;padding: 5px; text-align:center">Actions</th>
+</tr>
+        </thead>
+        <tbody data-bind="foreach: viewModel">
+            <tr>
+                <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center; font-weight:bold;" data-bind="text: title"></td>
+                <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center" data-bind="text: finalLocation"></td>
+                <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center" data-bind="text: finalTime"></td>
+                <td>
+                <div data-bind="template: { name: 'action-template', data: $data}"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr />
+</div>
+
+<div style="width:50%; float:left" id="divCreateFinalTime">
+    <br />
+    <h2>Create Final Time For a Class</h2>
+    <hr />
+    Subject (Ex: CSE):<br/> 
+    <input type="text" data-bind="value: title" />
+    <br /><br />
+    Course Number (Ex: 101):<br />
+    <input type="text" data-bind="value: id" />
+    <br /><br />
+    Course Location (Ex: CENTR):<br />
+    <input type="text" data-bind="value: finallocation" />
+    <br /><br />
+    Course Time (Ex: 07:30 PM):<br />
+    <input type="text" data-bind="value: finaltime" />
+    <br /><br />
+    <button  data-bind="click: add" style="padding: 5px 60px" >Create</button>
+    <br /><br />
+</div>
+
+<div style="width:50%; float:right" id="divEditFinalSchedule">
+    <br />
+    <h2>Edit Final Time For a Class</h2>
+    <hr />
+    Subject (Ex: CSE):<br />
+    <input type="text" data-bind="value: $data.title" />    
+    <br /><br />
+    Course Number (Ex: 101):<br />
+    <input type="text" data-bind="value: $data.id" />    
+    <br /><br />
+    Final Location (Ex: CENTR):<br />
+    <input type="text" data-bind="value: $data.finallocation" />    
+    <br /><br />
+    Final Time (Ex: 07:30 PM):<br />
+    <input type="text" data-bind="value: $data.finaltime" />    
+    <br /><br />
+    <button data-bind="value: 'Update', click: $data.update" style="padding: 5px 60px">Update</button>  
+    <br /><br />
+    <div id="divMessage"></div>
+</div>
+
+    
+<script type="text/html" id="action-template">
+    <input type="button" value="Update" data-bind="Load : id" style="border:1px solid #e3e3e3; padding: 5px 50px;background-color: #00ff21; color:#ffffff; font-weight:bold; " />
+    <input type="button" value="Delete" data-bind="DeleteFinalSchedule: id" style="border:1px solid #e3e3e3; padding: 5px 50px;background-color: #ff0000; color:#ffffff; font-weight:bold; " />
+</script>
+    
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var FinalScheduleViewModelObj = new FinalScheduleViewModel();
+            FinalScheduleViewModelObj.GetAll();
+            FinalScheduleViewModelObj.Initialize();
+    });
+</script>

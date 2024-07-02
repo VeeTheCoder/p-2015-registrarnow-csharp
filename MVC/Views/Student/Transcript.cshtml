@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Transcript";
+}
+
+<h2>Transcript: @ViewBag.Id</h2>
+
+<div id="divTranscriptContent">
+    <table>
+        <tbody data-bind="foreach: viewModel">
+            <tr>
+                <td data-bind="style: { color: wip, fontWeight: isBold }, text: value"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var transcriptViewModelObj = new TranscriptViewModel();
+        transcriptViewModelObj.Load("@ViewBag.Id");
+    });
+</script>

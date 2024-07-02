@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Academic Advising Messages (Admin)";
+    var id = ViewBag.id;
+}
+<h2>Academic Advising Inbox</h2>
+<hr>
+
+<div id="divAcademicAdvisingList">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Sender</th>
+                <th>Sender Id</th>
+                <th>Message Subject</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: viewModel">
+
+            <tr>
+                <td data-bind="text: studentName"></td>
+                <td data-bind="text: studentId"></td>
+                <td> <a data-bind="text: messageSubject, attr: {href: 'http://localhost:7540/AcademicAdvising/Get?id=' + id}"></a></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<style>
+    table {
+        border-spacing: 0px;
+        border-collapse: initial;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var academicAdvisingViewModelObj = new AcademicAdvisingViewModel();
+        academicAdvisingViewModelObj.GetAll("placeholder", true);
+    });
+</script>

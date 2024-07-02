@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Admin";
+    ViewBag.CurrentYear = Globals.CurrentYear;
+    ViewBag.CurrentQuarter = Globals.CurrentQuarter;
+}
+<h2>Welcome Admistrator</h2>
+
+<form method="post" action="/Admin">
+    <input type="hidden" name="id" value="@ViewBag.id">
+    <label>Current Year</label>
+    <input type="text" name="year" value="@ViewBag.CurrentYear" />
+    <br />
+    <label>Current Quarter</label>
+    <input type="text" name="quarter" value="@ViewBag.CurrentQuarter" />
+    <br />
+    <input type="submit" value="Update" id="updateButton" />
+</form>
+
+<p style="font-size:18px">Students</p>
+<ul class="list-group">
+    <li class="list-group-item"><a href="~/Admin/StudentList">Show All Students</a></li>
+    <li class="list-group-item"> <a href="Admin/AcademicAdvisingList?id=@ViewBag.id">Academic Advising</a> </li>
+    <li class="list-group-item"> <a href="Admin/GradeChangeList?id=@ViewBag.id">Grade Change</a> </li>
+</ul>
+
+<p style="font-size:18px">Edit</p>
+<ul class="list-group">
+    <li class="list-group-item" ><a href="~/Admin/Edit?id=@ViewBag.id">Edit My Info</a></li>
+</ul>
+
+<p style="font-size:18px">Manage</p>
+<ul class="list-group">
+    <li class="list-group-item"><a href="~/Admin/ManageFinalSchedule">Manage Final Schedule</a></li>
+    <li class="list-group-item"><a href="~/Admin/ManageGradeDistribution">Manage Grade Distribution</a></li>
+    <li class="list-group-item"><a href="~/Admin/Edit?id=@ViewBag.id">Edit my info</a></li>
+    <li class="list-group-item"><a href="~/Admin/StudentList">Show All Students</a></li>
+
+
+    <li class="list-group-item"><a href="~/GradStudent/CreateGradStudent">Create a Grad Student</a></li>
+    <li class="list-group-item"><a href="~/ForeignStudent/CreateForeignStudent">Create a Foreign Student</a></li>
+    <li class="list-group-item"><a href="~/GradStudent/DeleteGradStudent">Delete a Grad Student</a></li>
+    <li class="list-group-item"><a href="~/ForeignStudent/DeleteForeignStudent">Delete a Foreign Student</a></li>
+</ul>

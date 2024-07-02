@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div id="divRankingsListContent">
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Quarter</th>
+                <th>Session</th>
+                <th>Course</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: viewModel">
+            <tr>
+                <td data-bind="text: year"></td>
+                <td data-bind="text: quarter"></td>
+                <td data-bind="text: session"></td>
+                <td data-bind="text: title"></td>
+                <td data-bind="text: description"></td>
+                <td>
+                    <a data-bind="attr: {href: '/Rankings/ManageRankings?id=' + scheduleid + '&course=' + title}">
+                        Edit Rankings
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var rankingsViewModelObj = new RankingsViewModel();
+        rankingsViewModelObj.Load();
+    });
+</script>

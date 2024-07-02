@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "CreateGradStudent";
+    var id = ViewBag.Id;
+}
+
+
+<html>
+<div divid="divGradStudent">
+    <h1>Create a Graduate Student</h1>
+    <form role="form">
+        <div class="form-group">
+            <label for="sid">Sid</label>
+            <input data-bind="value: sid" type="text" class="form-control" id="sid">
+        </div>
+        <div class="form-group">
+            <label for="Under_Gpa">Under_Gpa</label>
+            <input data-bind="value: Under_gpa" type="text" class="form-control" id="gpa">
+        </div>
+        <div class="form-group">
+            <label for="gre">GRE</label>
+            <input data-bind="value: Gre" type="text" class="form-control" id="gre">
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox"> Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-default" data-bind="click: create">Submit</button>
+    </form>
+
+</div>
+
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var gradStudentViewModelObj = new GradStudentViewModel();
+        gradStudentViewModelObj.initializeGradStudent();
+    });
+</script>
+
+
+
+
+

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "ManageSchedule";
+}
+
+<h2>ManageSchedule</h2>
+
+<!-- form input to new schedule -->
+
+<div id="divManageScheduleContent">
+    <table>
+        <thead>
+            <tr>
+                <th>Quarter</th>
+                <th>Session</th>
+                <th>Course</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: viewModel">
+            <tr>
+                <td data-bind="text: Quarter"></td>
+                <td data-bind="text: Session"></td>
+                <td data-bind="text: Course.Title"></td>
+                <td data-bind="text: Year"></td>
+                <td>
+                    <button data-bind="click: handleClick()">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var scheduleViewModelObj = new ScheduleViewModel();
+        studentViewModelObj.ManageScheduleLoad();
+    });
+</script>

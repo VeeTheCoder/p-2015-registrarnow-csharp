@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Academic Advising - Get Message (Admin)";
+    var id = ViewBag.id;
+}
+<h2>Academic Advising - Viewing Message</h2>
+<hr>
+
+<div id="divAcademicAdvisingGet">
+    <ul class="list-group">
+        <li class="list-group-item" data-bind="text: 'From : ' + viewModel.studentName + ' (' + viewModel.studentId + ')' "></li>
+        <li class="list-group-item">To : Administrator </li>
+        
+        <li class="list-group-item" data-bind="text: 'Subject: ' + viewModel.messageSubject"></li>
+        <li class="list-group-item list-group-item-warning list-group-item-heading" >Message Body </li>
+        <li class="list-group-item" data-bind="text: viewModel.messageBody"></li>
+
+    </ul>
+    <input type="button" value="Delete Messsage" onclick="deleteMessage()">
+ 
+    <input type="button" value="Respond To Message" onclick="createMessage()">
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var academicAdvisingViewModelObj = new AcademicAdvisingViewModel();
+        academicAdvisingViewModelObj.GetMessage("@id");
+    });
+
+    function deleteMessage() {
+        var academicAdvisingViewModelObj = new AcademicAdvisingViewModel();
+        academicAdvisingViewModelObj.Delete("@id");
+        window.history.back();
+    }
+
+    function updateMessage() {
+        window.location = "Update?id=" + "@id";
+    }
+
+    function createMessage() {
+        window.location = "http://localhost:7540/AcademicAdvising/Respond?id=" + "@id";
+    }
+</script>

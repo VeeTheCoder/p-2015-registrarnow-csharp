@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Grade Change - Get Message (Admin)";
+    var id = ViewBag.id;
+}
+<h2>Grade Change - Viewing Request</h2>
+<hr>
+
+<div id="divGradeChangeGet">
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-warning" data-bind="text: 'Request Status: ' + viewModel.status"></li>
+
+        <li class="list-group-item" data-bind="text: 'Student Id: '+ viewModel.studentId"></li>
+      
+        <li class="list-group-item" data-bind="text: 'Student Name: ' + viewModel.studentName"></li>
+       
+        <li class="list-group-item" data-bind="text: 'Course Name: ' + viewModel.courseName"></li>
+     
+        <li class="list-group-item" data-bind="text: 'Instructor Name: ' + viewModel.instructorName"></li>
+       
+        <li class="list-group-item" data-bind="text: 'Request Detail: ' + viewModel.message"></li>
+    
+        
+    </ul>
+
+    <input type="button" value="Delete Request" onclick="deleteMessage()"> 
+    <input data-bind="visible: viewModel.status=='Pending', click: function(){ viewModel.update('Rejected') }" type="button" value="Reject Request">
+    <input data-bind="visible: viewModel.status=='Pending', click: function(){ viewModel.update('Approved') }" type="button" value="Approve Request">
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var gradeChangeViewModelObj = new GradeChangeViewModel();
+        gradeChangeViewModelObj.GetDetail("@id");
+
+    });
+
+    function deleteMessage() {
+        var gradeChangeViewModelObj = new GradeChangeViewModel();
+        gradeChangeViewModelObj.Delete("@id");   
+    }
+</script>

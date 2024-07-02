@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var id = ViewBag.Id;
+}
+
+<h2>ForeignStudent Detail</h2>
+
+<div id="divForeignStudent">
+    <button data-bind=" click: viewModel.changing, visible: !viewModel.editable()">edit</button>
+    <button data-bind="  click: viewModel.Update, visible: viewModel.editable()">Update</button>
+    <button data-bind="  click: viewModel.Cancel,  visible: viewModel.editable()">Cancel</button>
+    <table>
+        <tr>
+            <td>SID</td>
+            <td data-bind="text:             viewModel.sid"></td>
+        </tr>
+        <tr>
+            <td>Under_GPA</td>
+            <td><input data-bind="value:  viewModel.Under_gpa, enable: viewModel.editable" /><br></td>
+        </tr>
+        <tr>
+            <td>Toefl Score</td>
+            <td><input data-bind="value:  viewModel.toefl, enable: viewModel.editable" /><br></td>
+        </tr>
+    </table>
+</div>
+
+@Html.Partial("SharedStudentEnrollment")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var foreignStudentViewModelObj = new ForeignStudentViewModel();
+        foreignStudentViewModelObj.Initialize("@id");
+
+    });
+</script>
+
+
+
+
+

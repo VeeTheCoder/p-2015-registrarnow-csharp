@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Grade Change - Create Message";
+    var studentId = ViewBag.studentId;
+}
+<h2>Grade Change - Create Message</h2>
+<hr>
+
+<div id="divGradeChangeCreate">
+    <label>Course Name</label>
+    <input class="form-control" data-bind="value: courseName" maxlength="50" />
+    <br />
+    <label>Instructor Name</label>
+    <input class="form-control" data-bind="value: instructorName" maxlength="50" />
+    <br />
+    <label>Message</label>
+    <input class="form-control" data-bind="value: message" maxlength="1000" />
+    <br />
+    <input type="button" value="Send Message" data-bind="click: insert" id="idSubmitButton" />
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var gradeChangeViewModelObj = new GradeChangeViewModel();
+        gradeChangeViewModelObj.Initialize("@studentId");
+    });
+</script>

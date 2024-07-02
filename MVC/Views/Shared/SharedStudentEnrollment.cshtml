@@ -1,0 +1,66 @@
+﻿@{
+    var id = ViewBag.Id;
+}
+<div id="divEnrollmentContent">
+    <h3>Current Enrollment: @id</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Quarter</th>
+                <th>Session</th>
+                <th>Course</th>
+                <th>Year</th>
+                <th>Rank</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: enrolledListView">
+            <tr>
+                <td data-bind="text: Quarter"></td>
+                <td data-bind="text: Session"></td>
+                <td data-bind="text: Course.Title"></td>
+                <td data-bind="text: Year"></td>
+                <td data-bind="text: Rank"></td>
+                <td>
+                    <button data-bind="click: handleClick()">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="divScheduleContent">
+    <table>
+        <tbody>
+            <tr>
+                <td colspan="3" style="padding:10px; border:1px solid #e3e3e3;">
+                    <select data-bind="options: viewModel.data(),
+                            optionsText: function(item) {
+                                return item.title + ' - ' + item.session + ' - ' 
+                                    + item.description 
+                            },
+                            value: viewModel.selectable,
+                            optionsCaption: 'Select...'
+                            "></select>
+
+                </td>
+                <td>
+                    <div data-bind="visible: viewModel.selectable">
+                        <button data-bind="click: viewModel.handleClick()">
+                            Add <span data-bind="text: viewModel.selectable() ? viewModel.selectable().title : 'unknown'"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var enrollmentViewModelObj = new EnrollmentViewModel();
+        enrollmentViewModelObj.Load("@Globals.CurrentYear","@Globals.CurrentQuarter","@id");
+    });
+</script>

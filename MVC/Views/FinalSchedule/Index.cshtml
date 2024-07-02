@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<h2>Final Schedule List</h2>
+<hr />
+
+<div id="divFinalScheduleListContent">
+    <table style="border:1px solid #e3e3e3">
+        <thead>
+            <tr>
+                <th style="border:1px solid #e3e3e3;padding: 5px; text-align:center">Title</th>
+                <th style="border:1px solid #e3e3e3;padding: 5px; text-align:center">Final Location</th>
+                <th style="border:1px solid #e3e3e3;padding: 5px; text-align:center">Final Time</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: viewModel">
+            <tr>
+                <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center; font-weight:bold;" data-bind="text: title"></td>
+                <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center" data-bind="text: finalLocation"></td>
+                <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center" data-bind="text: finalTime"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var FinalScheduleViewModelObj = new FinalScheduleViewModel();
+        FinalScheduleViewModelObj.GetAll();
+    });
+</script>
+

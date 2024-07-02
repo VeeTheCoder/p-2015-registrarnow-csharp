@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Foreign Student Page</h3>
+
+<div id="divForeignStudentListContent">
+    <table>
+        <thead>
+            <tr>
+                <th>Sid</th>
+                <th>Under_Gpa</th>
+                <th>Toefl</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: viewModel">
+            <tr>
+                <td data-bind="text: sid"></td>
+                <td data-bind="text: under_gpa"></td>
+                <td data-bind="text: toefl"></td>
+                <td><button data-bind="DeleteForeignStudent: sid">   Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var foreignStudentViewModelObj = new ForeignStudentViewModel();
+        foreignStudentViewModelObj.GetAll();
+    });
+</script>
+
+
+
+

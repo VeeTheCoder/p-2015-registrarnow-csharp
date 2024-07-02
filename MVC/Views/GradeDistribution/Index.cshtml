@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<h2>Grade Distribution List</h2>
+<hr />
+
+<div id="divGradeDistributionListContent">
+    <table style="border:1px solid #e3e3e3">
+        <thead>
+            <tr>
+                <th style="border:1px solid #e3e3e3;padding: 5px; text-align:center">Title</th>
+                <th style="border:1px solid #e3e3e3;padding: 5px; text-align:center" colspan=5>Grade Distribution</th>
+            </tr>
+        </thead>
+        <tr>
+            <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center; font-weight:bold;">Grade</td>
+            <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center; font-weight:bold">A</td>
+            <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center; font-weight:bold">B</td>
+            <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center; font-weight:bold">C</td>
+            <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center; font-weight:bold">D</td>
+            <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center; font-weight:bold">F</td>
+
+        </tr>      
+    <tbody data-bind="foreach: viewModel">
+            <tr>
+                <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center; font-weight:bold;" data-bind="text: title"></td>
+                <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center" data-bind="text: grdA"></td>
+                <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center" data-bind="text: grdB"></td>
+                <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center" data-bind="text: grdC"></td>
+                <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center" data-bind="text: grdD"></td>
+                <td style="border:1px solid #e3e3e3;padding: 5px; text-align:center" data-bind="text: grdF"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var GradeDistributionViewModelObj = new GradeDistributionViewModel();
+        GradeDistributionViewModelObj.GetAll();
+    });
+</script>

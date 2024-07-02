@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Academic Advising - Update";
+    var id = ViewBag.id;
+}
+
+<h1>Academic Advising - Update!</h1>
+
+<div id="divAcademicAdvisingUpdate">
+    Student ID : <input type="text" data-bind="value: $data.studentId" disabled="disabled" maxlength="20"/><br />
+    <br />
+    MessageSubject : <input type="text" data-bind="value: $data.messageSubject" maxlength="50" /><br />
+    <br />
+    MessageBody : <input type="text" data-bind="value: $data.messageBody" maxlength="50"/><br />
+    <br />
+    <input type="button" data-bind="value: 'Update Message', click: $data.update" style="margin-left:80px" />
+    <br /><br />
+    <div id="divMessage"></div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var viewModel = new AcademicAdvisingViewModel();
+        viewModel.Load(@id);      
+    });
+
+</script>

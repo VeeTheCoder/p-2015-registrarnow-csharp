@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Grade Change - Create Request";
+}
+<h2>Grade Change - Create Request</h2>
+
+<hr>
+
+<h2>Course : 134 b</h2>
+
+<h2>TA : John Doe </h2>
+
+<p>Reason: </p>
+<textarea style="height:250px;width:90%">
+    My total score in the class was a 89.63% but I only received a B+. The professor specified that the range for an A in the class was a 90%-100%, and that he would round up the final scores. Please rectify.
+</textarea>
+<br />
+
+<form method="post" action="/AcademicAdvising/Delete?id=1">
+    <input type="submit" value="Send Request" id="idSubmitButton" />
+</form>
+
+<form method="post" action="/AcademicAdvising/?id=1">
+    <input type="submit" value="Back" id="idSubmitButton" />
+</form>
